@@ -7,12 +7,15 @@ import { BiSearch } from "react-icons/bi";
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
 import Library from "./Library";
+import { useUser } from "@/hooks/useUser";
 
 interface SidebarProps {
   children: React.ReactNode;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+  const { isLoading } = useUser();
+
   const pathname = usePathname();
 
   const routes = useMemo(
@@ -32,6 +35,9 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
     ],
     [pathname]
   );
+
+  // TODO: Improve upon auth sucess
+  if (isLoading) return <div>Loading ...</div>;
 
   return (
     <div className="flex h-full">

@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
   const router = useRouter();
 
   const supabaseClient = useSupabaseClient();
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
@@ -38,9 +38,6 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
       toast.success("Logged out!");
     }
   };
-
-  // TODO: Improve upon auth sucess
-  if (isLoading) return <div>Loading</div>;
 
   return (
     <div
