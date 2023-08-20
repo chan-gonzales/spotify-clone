@@ -35,9 +35,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
         .eq("song_id", songId)
         .single();
 
-      if (!error && data) {
-        setIsLiked(true);
-      }
+      setIsLiked(data ? true : false);
     };
 
     fetchData();
@@ -77,7 +75,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
       }
     }
 
-    // router.refresh();
+    router.refresh();
   };
 
   if (isLiked === null) {
