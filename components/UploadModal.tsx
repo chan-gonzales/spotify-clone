@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import uniqid from "uniqid";
@@ -17,7 +17,7 @@ const UploadModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const uploadModal = useUploadModal();
   const { user } = useUser();
-  const supabaseClient = useSupabaseClient();
+  const { supabaseClient } = useSessionContext();
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
