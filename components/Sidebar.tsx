@@ -12,6 +12,7 @@ import { useUser } from "@/hooks/useUser";
 import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
 import { twMerge } from "tailwind-merge";
+import Loading from "@/app/loading";
 
 interface SidebarProps {
   songs: Song[];
@@ -42,8 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ songs, children }) => {
     [pathname]
   );
 
-  // TODO: Improve upon auth sucess
-  if (isLoading) return <div>Loading ...</div>;
+  if (isLoading) return <Loading />;
 
   return (
     <div
