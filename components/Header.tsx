@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
 
     player.reset();
 
-    router.refresh();
+    router.replace("/");
 
     if (error) {
       toast.error(error.message);
