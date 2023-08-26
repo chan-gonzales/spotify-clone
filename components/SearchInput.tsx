@@ -17,13 +17,11 @@ const SearchInput = () => {
       title: debouncedValue,
     };
 
-    console.log(query);
     const url = qs.stringifyUrl({
       url: "/search",
       query: query,
     });
 
-    console.log(url);
     router.push(url);
   }, [debouncedValue, router]);
 
